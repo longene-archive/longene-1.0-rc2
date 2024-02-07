@@ -1,0 +1,8 @@
+TESTDLL   = msvcp60.dll
+APPMODE   = -mno-cygwin
+MODCFLAGS = @BUILTINFLAG@
+EXTRAINCL = -I$(top_srcdir)/include/msvcrt
+
+C_SRCS = \
+	ios.c \
+	string.c

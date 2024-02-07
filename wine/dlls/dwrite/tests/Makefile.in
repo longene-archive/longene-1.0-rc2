@@ -1,0 +1,7 @@
+TESTDLL = dwrite.dll
+IMPORTS = dwrite gdi32
+
+C_SRCS = \
+	analyzer.c \
+	font.c \
+	layout.c

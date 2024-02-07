@@ -1,0 +1,4 @@
+MODULE    = libuuid.a
+
+C_SRCS = \
+	uuid.c

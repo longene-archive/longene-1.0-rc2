@@ -1,0 +1,23 @@
+MODULE    = dinput.dll
+IMPORTLIB = dinput
+IMPORTS   = dxguid uuid comctl32 ole32 user32 advapi32
+EXTRALIBS = @IOKITLIB@ @FORCEFEEDBACKLIB@
+
+C_SRCS = \
+	config.c \
+	data_formats.c \
+	device.c \
+	dinput_main.c \
+	effect_linuxinput.c \
+	joystick.c \
+	joystick_linux.c \
+	joystick_linuxinput.c \
+	joystick_osx.c \
+	keyboard.c \
+	mouse.c
+
+IMPLIB_SRCS = data_formats.c
+
+IDL_SRCS = dinput_classes.idl
+
+RC_SRCS = dinput.rc

@@ -1,0 +1,33 @@
+#! /bin/sh
+
+set -e
+
+UK_DIR=/lib/modules/`uname -r`/misc
+
+# /etc/init.d/uk: init Longene
+
+. /lib/lsb/init-functions
+
+case "$1" in
+    start)
+    insmod $UK_DIR/unifiedkernel.ko;
+    ;;
+
+    stop)
+    rmmod unifiedkernel.ko;
+    ;;
+
+    restart)
+    rmmod unifiedkernel.ko;
+    insmod $UK_DIR/unifiedkernel.ko;
+    ;;
+
+    status)
+    echo "Longene-1.0-beta"
+    ;;
+    *)
+    echo "Usage: /etc/init.d/uk {start|stop|restart|status}"
+    exit 1
+esac
+
+exit 0

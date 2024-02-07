@@ -1,0 +1,13 @@
+Longene-1.0-rc2:
+- Update to Wine-1.7.10 latest version.
+- Fix /dev/syscall permissions.
+- Fix registry files permissions.
+- Register PE binary format to binfmt_misc.
+- Various bug fixes.
+
+Longene-1.0-rc1:
+- Don't need patch kernel now.
+- Update to Wine-1.7.9 latest version.
+- Support SMP.
+- Extremely stable.
+- Various bug fixes.

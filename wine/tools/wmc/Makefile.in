@@ -1,0 +1,24 @@
+PROGRAMS = wmc$(EXEEXT)
+MANPAGES = wmc.man.in
+ALL_LIBS = @LIBGETTEXTPO@ $(LIBWINE_STATIC) $(LIBPORT)
+
+C_SRCS = \
+	lang.c \
+	mcl.c \
+	po.c \
+	utils.c \
+	wmc.c \
+	write.c
+
+BISON_SRCS = mcy.y
+
+@MAKE_RULES@
+
+wmc$(EXEEXT): $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $(OBJS) $(ALL_LIBS) $(LDFLAGS)
+
+install install-dev:: wmc$(EXEEXT) install-man-pages
+	$(INSTALL_PROGRAM) wmc$(EXEEXT) $(DESTDIR)$(bindir)/wmc$(EXEEXT)
+
+uninstall::
+	$(RM) $(DESTDIR)$(bindir)/wmc$(EXEEXT)

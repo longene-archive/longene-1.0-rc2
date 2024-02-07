@@ -1,0 +1,343 @@
+The Wine development release 1.7.10 is now available.
+
+What's new in this release (see below for details):
+  - Window maximization in the Mac driver.
+  - AVI compressor implementation.
+  - Thread local storage support in dynamically loaded libraries.
+  - Beginnings of a Task Scheduler implementation.
+  - Extended IPX protocol support.
+  - Various bug fixes.
+
+The source is available from the following locations:
+
+  http://prdownloads.sourceforge.net/wine/wine-1.7.10.tar.bz2
+  http://mirrors.ibiblio.org/wine/source/1.7/wine-1.7.10.tar.bz2
+
+Binary packages for various distributions will be available from:
+
+  http://www.winehq.org/download
+
+You will find documentation on http://www.winehq.org/documentation
+
+You can also get the current source directly from the git
+repository. Check http://www.winehq.org/git for details.
+
+Wine is available thanks to the work of many people. See the file
+AUTHORS in the distribution for the complete list.
+
+----------------------------------------------------------------
+
+Bugs fixed in 1.7.10 (total 48):
+
+   3542  Dungeon Keeper Gold not starting
+   4633  Garmin MapSource 6.x crashes during attempt to communicate with GPS device
+   6833  AIM Pro fails to load 'apExtCmp.dll' (MSVCRT_ungetc write operation on read-only section/mapping)
+   8549  lsTasks tool fails due to ITaskScheduler::SetTargetComputer stub
+  10911  Jumpstart Mystery Club download manager doesn't work
+  13407  The Bat! Voyager fails to accept the master password
+  13982  Multiple Realarcade installers fail on startup, complaining with COM/LUA scripting errors (need IFileSystem3::GetFolder method implementation)
+  16265  ActiveX Control Pad installer hangs sometimes on exit; deadlock between LdrShutdownThread and TASK_ExitTask?
+  17747  Using race07 server on wan crashes
+  18752  Skype 4 MSI installer fails to start Skype.exe when finishing installation in Vista mode (missing TaskScheduler component)
+  19052  Jasc Animation Shop 3.05 crashes on startup
+  21107  Portable RDP 6 client fails on startup, claiming "An error occurred. Try to reconnect." (MoleBox application virtualization scheme)
+  21112  Newsbin 32 Bit Client crashes
+  21541  Farscape: The Game crash at game launch
+  21575  Shareaza 2.5.x Media Player refuses to play any media
+  21711  MotorM4X crashes when running with virtual desktop
+  23764  Segmentation fault when installing openmtb maps
+  25061  20dollars2surf app throws run-time error 445 while creating InternetExplorer.Application object
+  25109  Blood Bowl Legendary Edition cannot be launched.
+  26507  Muvee Reveal 8.0.1.1421 installer fails to extract its CABINET payload from embedded PE resource
+  26524  Muvee Reveal 8.0.1.1421 crashes on startup (main assembly manifest parser failure)
+  27180  Mobile Master: Crash at update
+  27651  Google Music Manager installer fails to start
+  30547  Corel Photo Downloader (Part of Corel MediaOne) crashes due to unimplemented function SHELL32.dll.SHCreateQueryCancelAutoPlayMoniker
+  31057  makefile(3) : fatal error U1034: syntax error : separator missing
+  32281  Visual C++ 2010 fails to install in 64-bit WINEPREFIX
+  32330  Steam slow to redraw when dragging offscreen in virtual desktop
+  32937  Freemake Video Converter: needs tasklist.exe
+  33886  Anno 1602: Unhandled exception: divide by zero in 32-bit code
+  34869  Microsoft Office 2013 full offline installer crashes on startup (TEB access with NULL TLS array pointer, failure to handle case where only late-bound modules have TLS directory)
+  34971  Volvo The Game crashes when selecting competition mode
+  35028  SPSS Legacy Viewer (SmartViewer 15) fails to install ("TempFolder" property reset by custom action)
+  35061  GoldCoin 0.7.1.7 shows assertion on startup (needs ntdll.NtQuerySemaphore implementation)
+  35084  Visual Studio 2010 installer fails to install in 64-bit Windows XP WINEPREFIX (claims "Windows XP x64 Service Pack 2 is required")
+  35138  Keil uVision 3 IDE (PK51 version) crashes when coming out of hardware debug session
+  35146  Gazillionaire stops drawing icons
+  35176  MSVC 2012 C compiler 'cl.exe' fails/crashes (TLS not correctly initialised for explicitly-loaded DLLs)
+  35198  Torch Browser needs USERENV.dll.GetAppliedGPOListW
+  35199  Eve Online needs msvcp100.dll.?_Getname@_Locinfo@std@@QBEPBDXZ
+  35204  oleacc:cannot find function DllGetClassObject
+  35235  GoldCoin 0.7.1.7: synchronization with network spams terminal with "fixme:winsock:convert_eai_u2w Unhandled unix EAI_xxx ret 0" messages
+  35236  Multiple applications refuse to load or crash on startup (Nitro PDF Reader 3, Mozilla Firefox) (exception in builtin 'msvcp100' entry point if 'msvcrt' is not mapped)
+  35262  HorzionX360: Unable to run installer
+  35269  Mobile Master crashes on startup (array-index out of bounds for IFile_tid in scrrun get_typeinfo)
+  35289  Star Wars - The Force Unleashed: launcher crash at start (better diagnostics for missing 'lcms2' support needed)
+  35292  Missing folder icons when changing installation location in TreeSize Free installer
+  35296  Multiple Realarcade installers fail on startup, complaining with COM/LUA scripting errors (need support for IFolder::get_SubFolders)
+  35302  AMD Processor Driver 1.3.2.x installer has incorrect image and text placement
+
+----------------------------------------------------------------
+
+Changes since 1.7.9:
+
+Alexander Nicolaysen Sørnes (1):
+      po: Update Norwegian translation.
+
+Alexandre Julliard (57):
+      msvcp90: Avoid mismatched parentheses inside ifdefs.
+      msvcp90: Work around Mingw duplicate encode/decode_pointer definition.
+      msvcp100: Implement _Locinfo::_Getname.
+      winebuild: Fix path separator for Cygwin.
+      ntdll: Allocate a separate pointer for each TLS slot.
+      ntdll: Allocate TLS slots dynamically on module load.
+      ntdll: Allocate TLS data in all running threads on module load.
+      makedep: Specify the old extension explicitly when replacing it.
+      makedep: Use array of filenames in more places.
+      makedep: Add a separate pragma flag for typelibs that need registration.
+      widl: Determine the output type from the file name if not specified explicitly.
+      makedep: Generate a common rule for all objects of a given idl source.
+      configure: Always use the local install-sh script for installing.
+      makefiles: Leave it to install-sh to create destination directories.
+      makedep: Use a string array to manage include directories.
+      makedep: Use a string array to manage dlldata source files.
+      makedep: Use a string array to store makefile variables.
+      makedep: Allow overriding makefile variables through the command line.
+      makedep: Allow overriding makefile variables through the MAKEFLAGS environment variable.
+      makedep: Manage generated source files explicitly instead of relying on name comparisons.
+      makedep: Generate rules for svg files in maintainer mode.
+      makedep: Generate rules for TrueType fonts in maintainer mode.
+      msvcp: Don't forward __uncaught_exception to msvcrt.
+      msvcp: Don't forward the mbtowc functions to msvcrt.
+      msvcp: Don't assume that msvcrt is imported.
+      configure: Don't create cross-compiled import libraries for 16-bit modules.
+      makedep: Generate a list of phony targets.
+      makedep: Clean up output files on failure.
+      makedep: Manage current output column with a global variable.
+      makedep: Pass string arrays by value in some places.
+      gdi32: Don't bother returning the driver module from DRIVER_load_driver.
+      gdi32: Trigger the display driver load for CreateCompatibleDC(0).
+      scrrun: Add missing ITextStream id.
+      makedep: Keep track of object files in separate arrays.
+      makedep: Generate rules for the main module.
+      makedep: Generate rules for import libraries.
+      makedep: Generate rules for static libraries.
+      makedep: Generate rules for test binaries.
+      makedep: Generate rules for API documentation.
+      oleaut32: Don't create non-existent typelib files.
+      makefiles: Use a single variable for all types of idl files.
+      makefiles: Remove no longer needed dlldata.o and testlist.o extra objects.
+      makefiles: Include program files in the all: target.
+      makefiles: Include manpages in the all: target.
+      makefiles: Add support for a variable to list extra targets.
+      makefiles: Define libwine soversion from configure.
+      Update copyright info for 2014.
+      makefiles: Generate cross-compile rules automatically when supported.
+      makefiles: Automatically add dll flags where necessary.
+      makefiles: Automatically output appropriate target flags.
+      makefiles: Determine module type based on the defined variables, and add some sanity checks.
+      shell32: Use Shell_GetImageLists to retrieve image lists instead of using a global variable.
+      makefiles: Get rid of the MAKE_DLL_RULES variable.
+      makefiles: Get rid of the MAKE_PROG_RULES variable.
+      makefiles: Get rid of the MAKE_IMPLIB_RULES variable.
+      makefiles: Get rid of the MAKE_TEST_RULES variable.
+      version: Load the resource that corresponds to the current language first.
+
+Andrey Gusev (2):
+      d3d8: Added missing hyphen in WARN message.
+      po: Ukrainian translation updates and spelling fixes.
+
+André Hentschel (3):
+      kernel32: Adapt input checking in OpenConsoleW to match win8 behaviour.
+      kernel32/tests: Accept more win8 return values.
+      gdi32: Fix a comment.
+
+Austin English (1):
+      wine.inf: Bump XP 64-bit to service pack 2.
+
+Bruno Jesus (9):
+      ws2_32: Do not convert EAI_xxx return in case of success.
+      ws2_32: Normalize IPX protocol names using the WS prefix.
+      ws2_32/tests: Fix some test message typos.
+      ws2_32: Add support to print IPX socket address.
+      ws2_32: Add support to check if an IPX socket is bound.
+      ws2_32: Add a missing release_sock_fd.
+      ws2_32: Use a helper function to set the IPX packet type.
+      ws2_32: Add extended IPX protocol support.
+      ws2_32: Cope with invalid hints in getaddrinfo/GetAddrInfoW.
+
+Dmitry Timoshkov (22):
+      taskschd: Add new dll.
+      ws2_32: Add a workaround for broken versions of glibc which return EAI_SYSTEM and set errno to 0 instead returning of EAI_NONAME.
+      ws2_32: Add translation for AI_V4MAPPED.
+      ws2_32: Add more traces.
+      ws2_32/tests: Add a test for inet_ntoa called from two threads.
+      ws2_32: Move the buffer used by inet_ntoa into the per-thread data.
+      ntdll: Implement NtQuerySemaphore/SemaphoreBasicInformation.
+      include: Add Task Scheduler typelib definition.
+      taskschd: Add ITaskService stub implementation.
+      taskschd: Add Task Scheduler class factory.
+      taskschd: Add registration for TaskScheduler interfaces.
+      advapi32/tests: Test generic access mapping for a mutex.
+      advapi32/tests: Test generic access mapping for an event.
+      advapi32/tests: Test generic access mapping for a semaphore.
+      advapi32/tests: Test generic access mapping for a pipe.
+      advapi32/tests: Test generic access mapping for a file.
+      cabinet/tests: Add an FDICopy test which emulates extracting from a memory block.
+      cabinet: Read CAB size from the file header instead of calling FDI seek callback with SEEK_END.
+      cabinet: Remove a no longer valid comment about seeking and restoring CAB position.
+      xmllite: Use wine_dbg_sprintf instead of a static buffer.
+      xmllite: Constify pointers in arrays that hold const data.
+      winebuild: Write actual (not aligned) sizes in the resource headers.
+
+François Gouget (2):
+      gdi32/tests: Fix a flood of failures on Windows XP SP1 and 2003 pre-SP1.
+      ddraw/tests: Fix compilation on systems that don't support nameless unions.
+
+Frédéric Delanoy (38):
+      comcat/tests: Constify some character strings.
+      crypt32/tests: Constify some character strings.
+      dnsapi/tests: Constify a character string.
+      faultrep/tests: Constify some character strings.
+      gdi32/tests: Constify a character string.
+      hlink/tests: Constify some character strings.
+      imagehlp/tests: Constify some character strings.
+      inetcomm/tests: Constify some character strings.
+      infosoft/tests: Constify a character string.
+      kernel32/tests: Constify some character strings.
+      localspl/tests: Constify some character strings.
+      localui/tests: Constify some character strings.
+      winedump: Make segdir[] static.
+      winedump: Use BOOL type where appropriate.
+      msi/tests: Constify some character strings.
+      ntdll/tests: Constify a character string.
+      msxml3/tests: Constify some character strings.
+      oleaut32/tests: Constify some character strings.
+      ole32/tests: Constify some character strings.
+      oledb32/tests: Constify some character strings.
+      qedit/tests: Constify some character strings.
+      scrrun/tests: Constify a character string.
+      secur32/tests: Constify a character string.
+      shdocvw/tests: Constify some character strings.
+      shell32/tests: Constify some character strings.
+      shlwapi/tests: Fix StrChrNW prototype.
+      shlwapi/tests: Constify some character strings.
+      urlmon/tests: Constify some character strings.
+      user32/tests: Constify some character strings.
+      version/tests: Constify some character strings.
+      winhttp/tests: Constify a character string.
+      wininet/tests: Constify some character strings.
+      winspool.drv/tests: Constify some character strings.
+      wintrust/tests: Constify some character strings.
+      winedump: Use BOOL type where appropriate.
+      winedump: Use BOOL type where appropriate.
+      ddraw/tests: Use BOOL type where appropriate.
+      comctl32/tests: Use BOOL type where appropriate.
+
+Hans Leidekker (4):
+      msi: Always derive the SourceDir property from the database path.
+      msi: Fall back to the global temporary directory when the TempFolder property resolves to a non-existing directory.
+      msi: Remove the unused CurrentlyScripting field from MSISCRIPT.
+      mscms: Print a fixme when compiled without support for liblcms2.
+
+Jacek Caban (16):
+      msrle32/tests: Added tests.
+      qcap: Added IPersistPropertyBag stub implementation to AVI compressor.
+      qcap: Added AVI compressor input pin stub implementation.
+      qcap: Added AVI compressor output pin stub implementation.
+      qcap: Added IPersistPropertyBag::Load implementation.
+      qcap: Added AVICompressorIn_CheckMediaType implementation.
+      qcap: Added AVICompressorIn_ReceiveConnection implementation.
+      qcap: Added AVICompressorOut_GetMediaType implementation.
+      qcap: Added AVICompressorOut_DecideBufferSize implementation.
+      qcap: Added AVI compressor Start and Stop implementations.
+      msrle32: Use the same default quality as native.
+      msrle32: Get rid of ICM_GETQUALITY and ICM_SET_QUALITY that should not be supported.
+      msrle32: Append EOI instead of replacing EOL.
+      msrle32: Get rid of no longer needed lDist argument in MSRLE32_CompressRLE8Line.
+      msrle32: Properly set compression output flags.
+      qcap: Added AVICompressorIn_Receive implementation.
+
+Ken Thomases (11):
+      winemac: Don't check the state of the SC_MINIMIZE item of the window menu when asked to minimize.
+      winemac: Extract some duplicated code to a new perform_window_command() function.
+      winemac: Move some state-based feature adjustment into the -adjustFeaturesForState method.
+      winemac: Prevent disabled windows from being moved.
+      winemac: Allow programmatic changes of the window frame even if a window is disabled (prevented from resizing).
+      winemac: Implement support for maximizing windows.
+      winemac: Defer adjusting window levels while the process is hidden.
+      winemac: Track whether our windows would be visible if the process weren't hidden.
+      winemac: Explicitly unhide the app early when showing windows.
+      winemac: For WINDOW_DID_UNMINIMIZE events, don't attempt to restore windows which aren't minimized and visible.
+      winemac: More thoroughly discard events which have been obsoleted by subsequent Wine- or program-driven changes.
+
+Marcus Meissner (4):
+      gdiplus: Free the correct pointer (Coverity).
+      mmsystem.dll16: Free the correct pointer (Coverity).
+      setupapi: Do not free stack pointers (Coverity).
+      msxml3: Avoid double free of str (Coverity).
+
+Martin Storsjo (1):
+      ntdll: Improve handling of THUMB_MOV32 relocations.
+
+Michael Müller (1):
+      quartz: Return increasing monitor GUID on VMR7 monitor enumeration.
+
+Michael Stefaniuc (5):
+      dmusic: These COM classes don't support COM aggregation.
+      dmusic/tests: Centralize the skip().
+      dmusic/tests: Add some COM tests for IDirectMusic/IDirectMusicCollection.
+      dmusic/tests: Don't crash with old dmusic versions.
+      dmusic/tests: Change the way of detecting a workable dmusic.
+
+Nikolay Sivov (16):
+      oleacc: Added DllGetClassObject() stub.
+      include: Added ID2D1SimplifiedGeometrySink definition.
+      ntdll: Open source file only when needed during context creation.
+      ntdll: Fix return value when failed to locate resource.
+      ole32: Call moniker methods with proper wrappers.
+      include: Added IQueryCancelAutoPlay definition.
+      shell32: Implement SHCreateQueryCancelAutoPlayMoniker() with some tests.
+      ntdll: Fix manifest attribute parsing.
+      scrrun: Store folder path.
+      scrrun: Implement GetFolder().
+      scrrun: Use DISPID_VALUE instead of 0 in private idl.
+      scrrun: Added IFolderCollection stub.
+      scrrun: Fix IFolder::QueryInterface() to respond to IDispatch query.
+      scrrun: Implement Count() property for folder collection.
+      scrrun: Implement IEnumVARIANT stub for folder collection.
+      scrrun: Implement Reset() for folder collection.
+
+Piotr Caban (4):
+      msvcrt: Convert data to multibyte encoding in ungetwc if needed.
+      msvcrt: Don't write to buffer in ungetc if _IOSTRG flag is specified.
+      msvcrt: Try to convert C to C++ exception in __CxxFrameHandler.
+      msvcp80: Fix ostreambuf_iterator<char> structure definition.
+
+Sebastian Lackner (4):
+      ntdll: Allow passing NULL buffer to printf functions.
+      ntdll/tests: Add test for _snprintf.
+      kernel32: Prevent endless loop if NtQuerySystemInformation fails.
+      server: Don't call close() on uninitialized memory in sock_check_pollhup.
+
+Stefan Dösinger (10):
+      wined3d: Fix an msvc warning.
+      d3dx9_36: Use D3DX_PI instead of M_PI.
+      d3dx9_36/tests: Use D3DX_PI instead of M_PI.
+      d3dx9_36: Use SIZE_T for some iterators.
+      d3dx9_36: Make NUM_ELEM a define.
+      d3dx9_36: Use float math functions.
+      d3dx9_36: Floatify some constants.
+      d3dx9_36: Add explicit casts in type conversion functions.
+      d3dx9_36/tests: Fix calling convention specification.
+      d3dx9_36/tests: Use NAN.
+
+Zhenbo Li (3):
+      kernel32/tests: Add some tests for DeleteFileA.
+      kernel32/tests: Add one more test for FindFirstFileA.
+      wineps.drv: Constify a few pointers.
+
+--
+Alexandre Julliard
+julliard@winehq.org

@@ -1,0 +1,4 @@
+MODULE    = fltlib.dll
+
+C_SRCS = \
+	fltlib.c

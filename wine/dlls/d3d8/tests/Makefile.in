@@ -1,0 +1,7 @@
+TESTDLL   = d3d8.dll
+IMPORTS   = user32
+
+C_SRCS = \
+	device.c \
+	stateblock.c \
+	visual.c

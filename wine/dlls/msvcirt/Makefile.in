@@ -1,0 +1,5 @@
+MODULE    = msvcirt.dll
+IMPORTS   = msvcrt
+
+C_SRCS = \
+	msvcirt.c

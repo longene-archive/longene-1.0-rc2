@@ -1,0 +1,5 @@
+TESTDLL   = qcap.dll
+IMPORTS   = strmiids uuid oleaut32 ole32 advapi32
+
+C_SRCS = \
+	qcap.c

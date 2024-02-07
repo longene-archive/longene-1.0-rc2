@@ -1,0 +1,5 @@
+TESTDLL   = oleacc.dll
+IMPORTS   = oleacc
+
+C_SRCS = \
+	main.c

@@ -1,0 +1,66 @@
+Quick start
+===========
+Install Longene, you can simplely execute *uk_install.sh* in command line.
+
+OR
+
+If you want to compile the Longene by yourself, you have only 2 steps to go:
+1. Build Wine
+2. Build Longene module
+
+
+Build Wine
+==========
+To build Wine, cd to the top-level directory of the Wine for Longene
+source (wine), then configure and build it:
+
+  ./configure
+  sudo make
+  sudo make install
+
+
+Build Longene module
+=================================
+To build the module, cd to the "module" directory and run
+the command:
+
+  sudo make
+
+After building, install the module to get the Longene running:
+
+  sudo insmod unifiedkernel.ko
+
+All done, Longene is running!
+
+
+Run programs
+================
+
+First, execute under cmdlind:
+
+mount -t binfmt_misc none /proc/sys/fs/binfmt_misc
+echo ':DOSWin:M::MZ::/usr/local/bin/wine:' > /proc/sys/fs/binfmt_misc/register
+
+Now you can run some Win32 programs in X terminal windows just like what
+you do on Linux, such as:
+
+  ./Hellworld.exe
+
+Note that Longene is not completed yet, so some applications may crash the
+system or not work properly as on Microsoft Windows. You can report these
+bugs on :
+
+  http://www.longene.org/bugzilla
+
+
+UNINSTALL
+=========
+If you don't want to use Longene any more, you can uninstall it:
+
+1. Uninstall module:
+ 
+  rmmod unifiedkernel.ko
+
+cd to the directory "module" and run command:
+
+  make clean

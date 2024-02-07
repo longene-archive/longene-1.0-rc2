@@ -1,0 +1,48 @@
+            The Longene(Linux Unified Kernel) Project
+                  -- Longene-1.0-rc2
+
+Copyright:
+==========
+    (c) 2006 Insigma Co., Ltd
+
+This is an opensource project; you can redistribute and/or
+modify the programs under the terms of the GNU General Public
+License as published by the Free Software Foundation; either
+version 2 of the License, or (at your option) any later version.
+
+
+The Project:
+============
+Longene is a project (http://www.longene.org) undergoing in the
+Insigma Research Institute, which is a subdivision of Insigma
+Co., Ltd (http://www.insigma.com.cn).
+
+
+Sponsored by:
+=============
+  Insigma Co., Ltd (http://www.insigma.com.cn).
+
+
+Why
+===
+The previous release of Longene project depends on wineserver,
+that impaired Longene's performance to some extent.
+Now wineserver has been fully ported into the Longene kernel
+module. In other words, Longene is now fully indepedent of
+wineserver which is not needed any more.
+
+
+To Build and Run:
+=================
+Install Longene, you have only 2 steps to go:
+1. Build Wine
+2. Build Longene module
+
+To get more details of building and running, please read INSTALL.
+
+
+To Do in Future:
+================
+Please read the todo list in out website:
+
+  http://www.longene.org/todo_list.php

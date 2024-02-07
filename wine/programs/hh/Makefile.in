@@ -1,0 +1,5 @@
+MODULE    = hh.exe
+APPMODE   = -mwindows
+
+C_SRCS = \
+	main.c

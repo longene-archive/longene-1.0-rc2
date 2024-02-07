@@ -1,0 +1,16 @@
+MODULE = msvcp100.dll
+IMPORTS   = msvcr100
+MODCFLAGS = @BUILTINFLAG@
+EXTRAINCL = -I$(top_srcdir)/include/msvcrt
+EXTRADEFS = -D_MSVCP_VER=100
+PARENTSRC = ../msvcp90
+
+C_SRCS = \
+	exception.c \
+	ios.c \
+	locale.c \
+	math.c \
+	memory.c \
+	misc.c \
+	msvcp_main.c \
+	string.c

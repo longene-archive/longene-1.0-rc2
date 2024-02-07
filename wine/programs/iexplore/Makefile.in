@@ -1,0 +1,11 @@
+MODULE    = iexplore.exe
+APPMODE   = -mwindows -municode
+IMPORTS   = ieframe
+DELAYIMPORTS = advpack version
+
+C_SRCS = \
+	main.c
+
+RC_SRCS = iexplore.rc
+
+SVG_SRCS = iexplore.svg

@@ -1,0 +1,44 @@
+# Global rules shared by all makefiles     -*-Makefile-*-
+#
+# Each individual makefile may define the following variables:
+# C_SRCS       : C sources for the module
+# OBJC_SRCS    : Objective-C sources for the module
+# RC_SRCS      : resource source files
+# EXTRA_OBJS   : extra object files
+# IMPORTS      : dlls to import
+# DELAYIMPORTS : dlls to import in delayed mode
+# MODCFLAGS    : extra CFLAGS for this module
+
+# First some useful definitions
+
+DEFS         = -D__WINESRC__ $(EXTRADEFS)
+ALLCFLAGS    = $(DEFS) $(EXTRACFLAGS) $(CPPFLAGS) $(CFLAGS) $(MODCFLAGS) -DCONFIG_UNIFIED_KERNEL
+IDLFLAGS     = $(DEFS) $(EXTRAIDLFLAGS)
+RCFLAGS      = --nostdinc $(PORCFLAGS) $(DEFS)
+
+OBJS = $(C_SRCS:.c=.o) $(BISON_SRCS:.y=.tab.o) $(LEX_SRCS:.l=.yy.o) $(OBJC_SRCS:.m=.o) \
+       $(RC_SRCS:.rc=.res) $(MC_SRCS:.mc=.res) $(EXTRA_OBJS)
+
+ALLCROSSCFLAGS = $(DEFS) -DWINE_CROSSTEST $(CPPFLAGS) $(CFLAGS)
+
+# Rules for dependencies
+
+depend: dummy
+	$(MAKEDEP) -M .
+
+.PHONY: depend
+
+# Rules for cleaning
+
+clean::
+	$(RM) $(CLEAN_FILES)
+
+.PHONY: clean
+
+# Rules for installing
+
+install install-lib install-dev uninstall::
+
+.PHONY: install install-lib install-dev uninstall
+
+# End of global rules

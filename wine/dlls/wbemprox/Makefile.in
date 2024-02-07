@@ -1,0 +1,19 @@
+MODULE    = wbemprox.dll
+IMPORTS   = version iphlpapi dxgi oleaut32 ole32 advapi32 user32 gdi32
+
+C_SRCS = \
+	builtin.c \
+	class.c \
+	main.c \
+	process.c \
+	qualifier.c \
+	query.c \
+	reg.c \
+	service.c \
+	services.c \
+	table.c \
+	wbemlocator.c
+
+IDL_SRCS = wbemprox.idl
+
+BISON_SRCS = wql.y

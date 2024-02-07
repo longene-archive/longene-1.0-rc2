@@ -1,0 +1,7 @@
+MODULE    = taskschd.dll
+
+C_SRCS = \
+	task.c \
+	taskschd.c
+
+IDL_SRCS = taskschd_tlb.idl

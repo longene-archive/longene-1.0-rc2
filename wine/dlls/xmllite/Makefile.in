@@ -1,0 +1,6 @@
+MODULE    = xmllite.dll
+
+C_SRCS = \
+	reader.c \
+	writer.c \
+	xmllite_main.c
